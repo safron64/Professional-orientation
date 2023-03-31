@@ -149,6 +149,12 @@ p {
 	padding-right: 10px;
 }
 
+#modal-close__btn2{
+	position: inherit;
+	padding: 0 0 0 0;
+	margin: 10px 0 10px 85%;
+}
+
 #modal-close__btn:hover,
 #modal-close__btn2:hover {
 	transform: rotate(180deg);
@@ -228,34 +234,7 @@ p {
 	background-color: #5287e9;
 }
 
-@media (max-width: 550px) {
-	.question {
-		font-size: 20px;
-		line-height: 1.3;
-	}
 
-	input[type='radio'] {
-		width: 18px;
-		height: 18px;
-		left: -25px;
-		top: 7px;
-	}
-	.answer {
-		font-size: 20px;
-		padding-left: 25px;
-	}
-	#modal-close__btn {
-		background-size: 40px;
-		width: 40px;
-		height: 40px;
-	}
-
-	#aiz-test__submit {
-		height: 40px;
-		width: 200px;
-		font-size: 14px;
-	}
-}
 
 .result-message {
 	color: #3b3b3b;
@@ -338,7 +317,7 @@ p {
 	opacity: 0.3;
 }
 
-.yow-submit{
+.yow-submit {
 	display: flex;
 	flex-direction: row-reverse;
 }
@@ -363,6 +342,41 @@ p {
 	background: rgba(78, 61, 209, 0.85);
 }
 
-.error-border{
+.error-border {
 	border: red 1px solid;
+}
+
+
+@media (max-width: 550px) {
+	.question {
+		font-size: 20px;
+		line-height: 1.3;
+	}
+
+	input[type='radio'] {
+		width: 18px;
+		height: 18px;
+		left: -25px;
+		top: 7px;
+	}
+	.answer {
+		font-size: 20px;
+		padding-left: 25px;
+	}
+	#modal-close__btn, #modal-close__btn2 {
+		background-size: 40px;
+		width: 40px;
+		height: 40px;
+	}
+
+	#aiz-test__submit {
+		height: 40px;
+		width: 200px;
+		font-size: 14px;
+	}
+
+	.quiz {
+		width: 90%;
+		margin-top: 30px;
+	}
 }
