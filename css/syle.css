@@ -1,3 +1,7 @@
+button {
+	border: none;
+}
+
 body {
 	background: linear-gradient(
 			113.49deg,
@@ -106,6 +110,7 @@ p {
 }
 
 /* madal window */
+.container-modal,
 .container-modal {
 	position: relative;
 	display: flex;
@@ -117,7 +122,8 @@ p {
 	display: none;
 }
 
-.modal-show {
+.modal-show,
+.modal-show2 {
 	overflow-y: auto;
 	position: fixed;
 	background: #fff;
@@ -128,8 +134,8 @@ p {
 	z-index: 99999;
 }
 
-
-#modal-close__btn {
+#modal-close__btn,
+#modal-close__btn2 {
 	display: block;
 	position: sticky;
 	background: url(../img/close.svg) no-repeat;
@@ -143,13 +149,8 @@ p {
 	padding-right: 10px;
 }
 
-/* #modal-close__btn::before {
-	content: '';
-	position: absolute;
-} */
-
-#modal-close__btn:hover {
-	/* transform: scale(1.2,1.2); */
+#modal-close__btn:hover,
+#modal-close__btn2:hover {
 	transform: rotate(180deg);
 }
 
@@ -192,7 +193,7 @@ p {
 	cursor: pointer;
 }
 
-input[type='radio'] {
+.radio input[type='radio'] {
 	position: absolute;
 	width: 25px;
 	height: 25px;
@@ -223,9 +224,8 @@ input[type='radio'] {
 	transition: color ease-in 0.15s;
 }
 
-#aiz-test__submit:hover{
+#aiz-test__submit:hover {
 	background-color: #5287e9;
-
 }
 
 @media (max-width: 550px) {
@@ -257,16 +257,112 @@ input[type='radio'] {
 	}
 }
 
-
-.result-message{ 
+.result-message {
 	color: #3b3b3b;
 	font-size: 30px;
 	margin-top: 70px;
 	font-weight: 500;
-
 }
 
-.result-message span{
+.result-message span {
 	color: #000;
 	font-weight: 700;
+}
+
+.yow-title {
+	color: #000;
+	margin-bottom: 16px;
+	font-size: 24px;
+}
+
+.yow-desc {
+	color: #000;
+	font-size: 16px;
+}
+.quiz {
+	position: relative;
+	width: 50%;
+	display: flex;
+	margin: 100px auto;
+	flex-direction: column;
+}
+
+.quiz-title {
+	color: #000;
+	font-weight: 700;
+	margin-bottom: 16px;
+	font-size: 16px;
+}
+
+.yow-answer {
+	color: #000;
+	width: 100%;
+	border-radius: 8px;
+	box-shadow: 0 8px 16px 0 rgba(114, 114, 114, 0.2);
+	margin: 0 0 16px;
+	padding: 16px;
+	text-align: left;
+	cursor: pointer;
+	font-size: 18px;
+}
+
+.modal-main2 {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.answer-list input[type='radio'] {
+	display: none;
+}
+
+.input-text {
+	color: #000;
+	width: 100%;
+	border-radius: 8px;
+	box-shadow: 0 8px 16px 0 rgba(114, 114, 114, 0.2);
+	margin: 0 0 16px;
+	padding: 16px;
+	cursor: pointer;
+	font-size: 18px;
+	color: #000;
+	text-align: left;
+}
+
+.active {
+	background: #4e3dd1;
+	color: #fff;
+}
+
+.disabled {
+	opacity: 0.3;
+}
+
+.yow-submit{
+	display: flex;
+	flex-direction: row-reverse;
+}
+
+.yow-button {
+	background: #4e3dd1;
+	color: #fff;
+	border-radius: 8px;
+	padding: 16px 8px;
+	text-align: center;
+	display: block;
+	width: 140px;
+	height: 50px;
+	font: 16px/16px RobotoMedium, Arial, sans-serif;
+	cursor: pointer;
+	box-shadow: none;
+	border: none;
+	margin-top: 25px;
+}
+
+.yow-button:hover {
+	background: rgba(78, 61, 209, 0.85);
+}
+
+.error-border{
+	border: red 1px solid;
 }
