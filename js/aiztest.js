@@ -1,12 +1,3 @@
-const answers = []
-const answerDivs = document.querySelectorAll('.answer')
-const aizButton = document.querySelector('#aiz-test__submit')
-const radios = document.querySelectorAll('input[type="radio"]')
-const radioContainer = document.querySelector('.question')
-let result = document.querySelector('.result')
-const selectedAnswers = []
-const aizQuestions = document.querySelector('.questions')
-
 const questionList = `<div class="question">
 1. Часто ли Вы испытываете тягу к новым
 впечатлениям, к тому чтобы отвлечься,
@@ -1270,9 +1261,19 @@ const questionList = `<div class="question">
 	<label for="answer-57n">Нет</label>
 </div>
 </div>`
-
+const aizQuestions = document.querySelector('.questions')
 aizQuestions.innerHTML += questionList
+const answers = []
+const answerDivs = document.querySelectorAll('.answer')
+const aizButton = document.querySelector('#aiz-test__submit')
+const radios = document.querySelectorAll('input[type="radio"]')
+const radioContainer = document.querySelector('.question')
+let result = document.querySelector('.result')
+const selectedAnswers = []
 
+radios.forEach(radio => {
+	radio.addEventListener('change', checkRadios)
+})
 aizButton.addEventListener('click', getSelectedAnswers)
 
 function checkRadios() {
@@ -1310,7 +1311,6 @@ function getSelectedAnswers() {
 }
 
 function showResult() {
-	
 	let extravers = 0
 	let neuroticism = 0
 
@@ -1367,5 +1367,6 @@ function showResult() {
 			.replace('%vottakoy%', 'Меланхолик')
 		result.innerHTML = finalMessage
 	}
+
 
 }
