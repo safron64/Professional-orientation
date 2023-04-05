@@ -1,20 +1,34 @@
-const openModalbtn = document.querySelector('#btn-modal')
+const openModalbtn1 = document.querySelector('#btn-modal')
+const openModalbtn2 = document.querySelector('#btn-modal2')
 const none = document.querySelector('.none')
-const modalShow = document.querySelector('#show-window')
-const ModalClose = document.querySelector('#modal-close__btn')
-const body = document.getElementsByTagName('body')[0];
+const modalShow1 = document.querySelector('#show-window')
+const modalShow2 = document.querySelector('#show-window2')
+
+const modalClose1 = document.querySelector('#modal-close__btn')
+const modalClose2 = document.querySelector('#modal-close__btn2')
+const body = document.getElementsByTagName('body')[0]
 
 
-showWindow = () => {
-	modalShow.classList.remove('none')
-	openModalbtn.blur()
+openModalbtn1.onclick = function () {
+	modalShow1.classList.remove('none')
+	openModalbtn1.blur()
 	body.classList.add('scroll-hidden')
 }
 
-closeModal = () => {
-	modalShow.classList.add('none')
+openModalbtn2.onclick = function () {
+	modalShow2.classList.remove('none')
+	openModalbtn2.blur()
+	body.classList.add('scroll-hidden')
+}
+
+modalClose1.onclick = function () {
+	modalShow1.classList.add('none')
+
 	body.classList.remove('scroll-hidden')
 }
 
-openModalbtn.addEventListener('click', showWindow)
-ModalClose.addEventListener('click', closeModal)
+modalClose2.onclick = function () {
+	modalShow2.classList.add('none')
+
+	body.classList.remove('scroll-hidden')
+}
