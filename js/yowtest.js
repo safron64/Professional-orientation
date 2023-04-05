@@ -208,6 +208,10 @@ const questions = [
 const listContainer = document.querySelector('.answer-list')
 const submitBtn = document.querySelector('.yow-button')
 const headerContainer = document.querySelector('.quiz-title')
+const yowResult = document.querySelector('.yow-result')
+const quizMain = document.querySelector('.quiz-main')
+let inputTextList = document.querySelectorAll('.input-text')
+const yowRadios = quizMain.querySelectorAll('input[type="radio"]')
 let questionIndex = 0
 
 let people = 0
@@ -218,11 +222,9 @@ let practical = 0
 let extreme = 0
 
 showQuestion()
+
 submitBtn.addEventListener('click', checkAnswer)
 
-// inputTextList.addEventListener('change', function(){
-// 	inputTextList.classList.remove('error-border')
-// })
 
 function showQuestion() {
 	questions[questionIndex].question
@@ -253,59 +255,61 @@ function showQuestion() {
 }
 
 function checkAnswer(event) {
-
-	const inputTextList = document.querySelectorAll('.input-text')
+	let inputTextList = document.querySelectorAll('.input-text')
 	event.preventDefault()
 	const selectedAnswer = listContainer.querySelector(
 		'input[type="radio"]:checked'
 	)
-	console.log(selectedAnswer)
 	if (selectedAnswer) {
 		const answerIndex = selectedAnswer.value
-		switch (answerIndex) {
-			case 'people':
-				people++
-				questionIndex++
-				clearPage()
-				showQuestion()
-				break
-			case 'aesthetics':
-				aesthetics++
-				questionIndex++
-				clearPage()
-				showQuestion()
-				break
-			case 'research':
-				research++
-				questionIndex++
-				clearPage()
-				showQuestion()
-				break
-			case 'extreme':
-				extreme++
-				questionIndex++
-				clearPage()
-				showQuestion()
-				break
-			case 'info':
-				info++
-				questionIndex++
-				clearPage()
-				showQuestion()
-				break
-			case 'practical':
-				practical++
-				questionIndex++
-				clearPage()
-				showQuestion()
-				break
-			default:
-				break
-			
+		if (questionIndex !== questions.length - 1) {
+			switch (answerIndex) {
+				case 'people':
+					people++
+					questionIndex++
+					clearPage()
+					showQuestion()
+					break
+				case 'aesthetics':
+					aesthetics++
+					questionIndex++
+					clearPage()
+					showQuestion()
+					break
+				case 'research':
+					research++
+					questionIndex++
+					clearPage()
+					showQuestion()
+					break
+				case 'extreme':
+					extreme++
+					questionIndex++
+					clearPage()
+					showQuestion()
+					break
+				case 'info':
+					info++
+					questionIndex++
+					clearPage()
+					showQuestion()
+					break
+				case 'practical':
+					practical++
+					questionIndex++
+					clearPage()
+					showQuestion()
+					break
+				default:
+					break
+			}
+		} else {
+			clearPage()
+			showResults()
 		}
 	} else {
 		inputTextList.forEach(element => {
-			// element.classList.add('error-border')
+			element.classList.add('error-border')
 		})
 	}
 	submitBtn.blur()
@@ -314,4 +318,185 @@ function checkAnswer(event) {
 function clearPage() {
 	headerContainer.innerHTML = ''
 	listContainer.innerHTML = ''
+}
+
+function showResults() {
+	quizMain.classList.add('none')
+	let inclinations = [people, info, aesthetics, research, practical, extreme]
+	inclinations.sort(function (a, b) {
+		return b - a
+	})
+	if (inclinations[0] === aesthetics) {
+		let yowResultHTML = `<h3 class="yow-result__title">
+		Вы имеете наибольшую профессиональную
+		склонность к эстетическим видам
+		деятельности
+	</h3>
+	<p class="yow-result__desc">
+		Склонность к эстетическим видам
+		деятельности предполагает профессии,
+		связанные с изобразительной,
+		музыкальной, литературно-художественной,
+		актерско-сценической деятельностью. Сюда
+		относится значительная часть творческих
+		профессий и профессий в сфере культуры и
+		искусств.
+	</p>
+	<p class="yow-result__desc">
+		Такие виды деятельности требуют наличия
+		специальных способностей (музыкальных,
+		литературных, актерских и др), интереса
+		к сфере культуры и искусств.
+	</p>`
+		yowResult.innerHTML += yowResultHTML
+	}
+
+	else if (inclinations[0] === extreme) {
+		let yowResultHTML = `<h3 class="yow-result__title">
+		Вы имеете наибольшую профессиональную
+		склонность к экстремальным видам
+		деятельности
+	</h3>
+	<p class="yow-result__desc">
+		Склонность к экстремальным видам
+		деятельности предполагает профессии,
+		связанные с занятиями спортом,
+		экспедициями, охранной, спасательной и
+		оперативной деятельностью, службой в
+		армии. Сюда относится значительная часть
+		профессий, требующих склонности к риску,
+		связанных с работой в сложных условиях и
+		чрезвычайных ситуациях, защитой граждан
+		и безопасностью, предупреждением
+		катастроф.
+	</p>
+	<p class="yow-result__desc">
+		Такие виды деятельности требуют от
+		профессионала хорошей физической
+		подготовки, смелости, самоотверженности.
+	</p>`
+		yowResult.innerHTML += yowResultHTML
+	}
+
+	else if (inclinations[0] === research) {
+		let yowResultHTML = `<h3 class="yow-result__title">
+		Вы имеете наибольшую профессиональную
+		склонность к исследовательской
+		деятельности
+	</h3>
+	<p class="yow-result__desc">
+		Склонность к исследовательской
+		деятельности предполагает профессии,
+		связанные с разработкой новых идей и
+		технологий в любой отрасли. Это может
+		быть научная деятельность в любой
+		области или инженерная деятельность,
+		связанная с конструированием,
+		разработками, созданием новых видов
+		продукции или технологий. Сюда можно
+		отнести профессии, предполагающие
+		значительный объем работы, связанный с
+		исследованиями, познанием сути явлений.
+	</p>
+	<p class="yow-result__desc">
+		Такие виды деятельности предъявляют
+		следующие требования к профессионалу:
+		хорошая теоретическая подготовка,
+		интуиция, развитый интеллект,
+		самостоятельность и гибкость мышления.
+	</p>`
+		yowResult.innerHTML += yowResultHTML
+	}
+
+	else if (inclinations[0] === info) {
+		let yowResultHTML = `<h3 class="yow-result__title">
+		Вы имеете наибольшую профессиональную
+		склонность к работе с информацией
+	</h3>
+	<p class="yow-result__desc">
+		Склонность к работе с информацией
+		предполагает профессии, связанные с
+		расчетами, сбором, обработкой, анализом
+		и преобразованием информации любого
+		рода. Сюда относится значительная часть
+		профессий, предполагающих работу в
+		условиях "человек-знаковая система".
+		Предметом труда могут быть цифры, знаки,
+		расчеты, документация, законы, тексты,
+		программный код, данные, перевод с
+		других языков.
+	</p>
+	<p class="yow-result__desc">
+		Такие виды деятельности требуют от
+		профессионала аккуратности,
+		внимательности, исполнительности,
+		ответственности.
+	</p>`
+		yowResult.innerHTML += yowResultHTML
+	}
+
+	else if (inclinations[0] === people) {
+		let yowResultHTML = `<h3 class="yow-result__title">
+		Вы имеете наибольшую профессиональную
+		склонность к работе с людьми
+	</h3>
+	<p class="yow-result__desc">
+		Склонность к работе с людьми
+		предполагает профессии, связанные с
+		работой с людьми, профессиональными
+		коммуникациями, продажами, клиентским
+		сервисом, воспитанием и обучением,
+		бытовым, информационным, юридическим
+		обслуживанием клиентов (защита в суде,
+		консультирование), медицинским сервисом,
+		лечением людей. Сюда можно отнести все
+		профессии, предполагающие значительный
+		объем работы по взаимодействию с людьми.
+	</p>
+	<p class="yow-result__desc">
+		Такие виды деятельности предъявляют
+		следующие требования к профессионалу:
+		интерес и терпимость к людям,
+		тактичность, развитый эмоциональный
+		интеллект.
+	</p>`
+		yowResult.innerHTML += yowResultHTML
+	}
+
+	else if(inclinations[0] === practical) {
+		let yowResultHTML = `<h3 class="yow-result__title">
+		Вы имеете наибольшую профессиональную
+		склонность к практической деятельности
+	</h3>
+	<p class="yow-result__desc">
+		Склонность к практической деятельности
+		предполагает профессии, связанные с
+		производством и обработкой материалов,
+		монтажем, ремонтом и обслуживанием
+		механизмов, зданий и конструкций,
+		управлением техникой (механизмами,
+		станками, транспортом), непосредственным
+		участием в изготовлении различных
+		изделий или производством продукции
+		промышленности и сельского хозяйства.
+		Сюда относится значительная часть
+		рабочих профессий, работа техников на
+		производстве, всех специалистов, кто
+		принимает непосредственное участие в
+		производстве чего бы то ни было. Также к
+		практической деятельности можно отнести
+		работу инженерного персонала, связанную
+		с монтажем, наладкой, обслуживанием и
+		ремонтом техники, но не предполагающую
+		ее конструирование и разработку.
+	</p>
+	<p class="yow-result__desc">
+		Такие виды деятельности предъявляют
+		следующие требования к профессионалу:
+		теоретические знания, практические
+		навыки, сила, выносливость.
+	</p>`
+		yowResult.innerHTML += yowResultHTML
+	}
+	console.log(inclinations)
 }

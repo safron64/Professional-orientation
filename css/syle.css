@@ -149,7 +149,7 @@ p {
 	padding-right: 10px;
 }
 
-#modal-close__btn2{
+#modal-close__btn2 {
 	position: inherit;
 	padding: 0 0 0 0;
 	margin: 10px 0 10px 85%;
@@ -234,8 +234,6 @@ p {
 	background-color: #5287e9;
 }
 
-
-
 .result-message {
 	color: #3b3b3b;
 	font-size: 30px;
@@ -251,7 +249,8 @@ p {
 .yow-title {
 	color: #000;
 	margin-bottom: 16px;
-	font-size: 24px;
+	font-size: 23px;
+	padding: 7px;
 }
 
 .yow-desc {
@@ -271,6 +270,7 @@ p {
 	font-weight: 700;
 	margin-bottom: 16px;
 	font-size: 16px;
+	
 }
 
 .yow-answer {
@@ -306,15 +306,18 @@ p {
 	font-size: 18px;
 	color: #000;
 	text-align: left;
+	box-sizing: border-box;
 }
 
 .active {
 	background: #4e3dd1;
 	color: #fff;
+	border: none !important;
 }
 
 .disabled {
 	opacity: 0.3;
+	border: none !important;
 }
 
 .yow-submit {
@@ -344,26 +347,53 @@ p {
 
 .error-border {
 	border: red 1px solid;
+	box-sizing: border-box;
 }
 
+.yow-result {
+	color: #333;
+	width: 80%;
+	margin: 0 auto;
+}
 
+.yow-result__title {
+	margin-bottom: 20px;
+	line-height: 1.1;
+}
+
+.yow-result__desc {
+	line-height: 1.3;
+}
 @media (max-width: 550px) {
+	.questions {
+		overflow-y: inherit;
+		clip-path: inherit;
+	}
+
 	.question {
 		font-size: 20px;
 		line-height: 1.3;
 	}
 
-	input[type='radio'] {
-		width: 18px;
-		height: 18px;
+	.radio input[type='radio'] {
+		width: 22px;
+		height: 22px;
 		left: -25px;
 		top: 7px;
+		
 	}
 	.answer {
-		font-size: 20px;
+		font-size: 22px;
 		padding-left: 25px;
 	}
-	#modal-close__btn, #modal-close__btn2 {
+	.radio label{
+		padding-left: 4px;
+		padding-bottom: 3px;
+	}
+
+
+	#modal-close__btn,
+	#modal-close__btn2 {
 		background-size: 40px;
 		width: 40px;
 		height: 40px;
@@ -378,5 +408,9 @@ p {
 	.quiz {
 		width: 90%;
 		margin-top: 30px;
+	}
+	.yow-result {
+		text-align: left;
+		width: 93%;
 	}
 }
